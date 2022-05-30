@@ -1,0 +1,2 @@
+# FourStoreEdu
+Projeto Solo
