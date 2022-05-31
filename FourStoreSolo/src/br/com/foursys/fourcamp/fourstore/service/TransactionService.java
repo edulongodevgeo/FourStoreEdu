@@ -24,8 +24,8 @@ public class TransactionService {
 		 * transaction.getProduct().getQtt());*/
 		 
 
-		System.out.println("Carregando transação... \n");
-		System.out.println("Informações das possibilidades de pagamento: \n");
+		System.out.println("Atualizando estoque a partir do cadastro de vendas feitas... \n");
+		//System.out.println("Informações das possibilidades de pagamento: \n");
 
 		// Cria o Object "preco" e multiplica valor do produto pela quantidade desejada
 		if (transaction.getPaymentMethod().equals(PaymentMethod.MONEY)) {
@@ -59,9 +59,9 @@ public class TransactionService {
 		
 		
 		
-		
-		System.out.println("=================================");
-		System.out.println("RECIBO DE TRANSAÇÃO");
+		//System.out.println("");
+		System.out.println("==================================");
+		System.out.println("CONFIRMAÇÃO DA ATUALIZAÇÃO DE VENDA (ESTOQUE ATUALIZADO): ");
 		
 		// verifica se getPrice deu certo
 		if (transaction.getPaymentValue() == 0.0) {
@@ -87,6 +87,21 @@ public class TransactionService {
 			for (Transaction sale : allSales) {
 				sellHistory += sale.toString() + "\n";
 			}
+		}
+
+		return sellHistory;
+	}
+	
+	public String returnRecibo() {
+		String sellHistory = "Nenhuma venda no histórico ainda.";
+		List<Transaction> allSales = transactionData.listAll();
+
+		if (allSales != null) {
+			sellHistory = "";
+			for (Transaction sale : allSales) {
+				sellHistory += sale.toString2() + "\n";
+			}
+			System.out.println("Atualização das vendas do dia: ");
 		}
 
 		return sellHistory;

@@ -93,4 +93,19 @@ public class Transaction {
         		+ "\n===============================";
         
     }
+    
+    //toString de NOTA FISCAL + GERAR O TOTAL!
+    public String toString2() {
+        return 	
+        		"\nTransação id : " + idTransaction
+        		//+ "\n--------------------------------------"
+                + "\nMétodo de pagamento: " + paymentMethod
+                + "\nSKU: " + getProduct().getSku()
+               // + "\nDados do pagamento: " + paymentData
+                + "\nQuantidade vendida: " + getProduct().getQtt()
+                + "\nValor pago: " + paymentValue
+               // + "\nCPF cliente: " + cpf
+        		+ "\n___________________________________________";
+        
+    }
 }

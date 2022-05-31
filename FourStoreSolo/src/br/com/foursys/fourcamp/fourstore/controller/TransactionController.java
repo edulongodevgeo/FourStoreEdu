@@ -34,7 +34,7 @@ public class TransactionController {
 
 		//chama método da venda do objeto criado
 		if(transactionService.sell(transaction)) {
-			result = "Compra efetuada com sucesso.";
+			result = "Atualização de estoque efetuado com sucesso!";
 			System.out.println(transaction);
 			System.out.println("");
 			System.out.println("");
@@ -92,9 +92,15 @@ public class TransactionController {
 	}
 	
 	public String returnSellHistory() {
-
+		System.out.println("RELATÓRIO GERAL DE VENDAS");
 		return transactionService.returnSellHistory();
 		}
+	
+	public String returnRecibo() {
+
+		return transactionService.returnRecibo();
+		}
+
 
 	
 		

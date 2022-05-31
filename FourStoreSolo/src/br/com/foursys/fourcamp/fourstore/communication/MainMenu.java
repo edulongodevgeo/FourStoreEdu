@@ -16,19 +16,26 @@ public class MainMenu {
 	// exibe menu
 	public void mainMenu() {
 		while (true) {
-			System.out.print("|--------------------------------------------|\n");
-			System.out.print("|                MENU FOURSTORE              |\n");
-			System.out.print("|--------------------------------------------|\n");
-			System.out.print("| Opção 1 - Cadastrar produto novo           |\n");
-			System.out.print("| Opção 2 - Registrar adição no estoque      |\n");
-			System.out.print("| Opção 3 - Listar Controle do Estoque       |\n");
-			System.out.print("| Opção 4 - Registrar remoção de estoque     |\n");
-			System.out.print("| Opção 5 - Efetuar venda                    |\n");
-			System.out.print("| Opção 6 - Relatório de vendas              |\n");
-			System.out.print("| Opção 0 - Sair                             |\n");
-			System.out.print("|--------------------------------------------|\n");
-			System.out.print("|              Digite uma opção:             |\n");
-			System.out.print("|--------------------------------------------|\n");
+			System.out.println("");
+			System.out.println("");
+			System.out.print("|----------------------------------------------------|\n");
+			System.out.print("|Olá! Somos a FourStock!                             |\n");
+			System.out.print("|Sistema de gerenciamento de estoque para seu varejo.|\n");
+			System.out.print("|----------------------------------------------------|\n");
+			
+			System.out.print("|----------------------------------------------------|\n");
+			System.out.print("|                CONTROLE DE ESTOQUE                 |\n");
+			System.out.print("|----------------------------------------------------|\n");
+			System.out.print("| Opção 1 - Cadastrar produto novo                   |\n");
+			System.out.print("| Opção 2 - Registrar adição no estoque              |\n");
+			System.out.print("| Opção 3 - Listar Controle do Estoque (Qtt por SKU) |\n");
+			System.out.print("| Opção 4 - Registrar remoção de estoque             |\n");
+			System.out.print("| Opção 5 - Registrar venda e atualizar estoque      |\n");
+			System.out.print("| Opção 6 - Relatório Geral de vendas                |\n");
+			System.out.print("| Opção 0 - Sair                                     |\n");
+			System.out.print("|----------------------------------------------------|\n");
+			System.out.print("|              Digite uma opção:                     |\n");
+			System.out.print("|----------------------------------------------------|\n");
 			opt = sc.nextInt();
 
 			switch (opt) {
@@ -95,10 +102,8 @@ public class MainMenu {
 		System.out.print("| SKU --------> ACCOOTM00WHI                 |\n");
 		System.out.print("| SKU --------> CLOMSUG00BLA                 |\n");
 		System.out.print("|--------------------------------------------|\n");
-		System.out.print("|      Informe o código sku do produto:      |\n");
-		System.out.print("|--------------------------------------------|\n");
-
-		// System.out.println("Informe o código sku do produto: ");
+		
+		System.out.println("Informe o código sku do produto: ");
 		String sku = sc.next();
 
 		System.out.println("Informe  o preço do produto: ");
@@ -145,18 +150,18 @@ public class MainMenu {
 	public void userCallSell() {
 		String paymentData = null;
 
-		System.out.println("Informe o SKU do produto que deseja comprar: ");
+		System.out.println("Informe o SKU do produto que foi vendido: ");
 		sc.nextLine();
 		String sku = sc.nextLine();
 
-		System.out.println("Informe a quantidade que deseja comprar: ");
+		System.out.println("Informe a quantidade vendida deste produto: ");
 		Integer qtt = sc.nextInt();
 
 
-		System.out.println("Informe seu CPF ou digite 0 para continuar: ");
+		System.out.println("Informe seu CPF do comprador // ou digite 0 para continuar: ");
 		String CPF = sc.next();
 
-		System.out.println("Informe o método de pagamento:\n" + "1- Dinheiro à vista (10% de desconto)\n"
+		System.out.println("MÉTODO DE PAGAMENTO DO CLIENTE:\n" + "1- Dinheiro à vista (10% de desconto)\n"
 				+ "2- Cartão de Débito (5% de desconto)\n" + "3- Cartão de Crédito (10% de acréscimo);\n"
 				+ "4- Pix (5% de acréscimo)");
 
@@ -177,7 +182,7 @@ public class MainMenu {
 
 		System.out.println(transactionController.sell(sku, qtt, CPF, paymentMethod, paymentData));
 
-		System.out.println("Digite 1 se deseja continuar comprando // Digite 0 para gerar seu recibo");
+		System.out.println("Digite 1 se deseja continuar atualizando o sistema de Controle de estoque // Digite 0 para gerar o recibo de atualização");
 		Integer toBeSell = sc.nextInt();
 
 		switch (toBeSell) {
@@ -187,7 +192,7 @@ public class MainMenu {
 			
 		default:
 			// mostra na tela pro usuário digitar dados do cartão pix etc
-			System.out.println(transactionController.returnSellHistory()); //Clonar o método transactionController.returnSellHistory como um "returnRECIBO", 
+			System.out.println(transactionController.returnRecibo()); //Clonar o método transactionController.returnSellHistory como um "returnRECIBO", 
 			//e formatar para ele retornar aqui em um formato um pouco diferente do Reletório.
 			// CRIAR o método "total", e tentar somar o total do "valor pago" do ToString...
 		}
